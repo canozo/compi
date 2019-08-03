@@ -11,12 +11,12 @@
 %}
 
 paragraphB = [a-zA-Z]
-paragraphE = \n
+paragraphE = \r|\n|\r\n
 
 %%
 
 <YYINITIAL> {
-  {paragraphB} { string.setLength(0); yybegin(PARAGRAPH); }
+  {paragraphB} { string.setLength(0); string.append(yytext()); yybegin(PARAGRAPH); }
   {paragraphE} {  }
   .            { yybegin(SKIP); }
 }
