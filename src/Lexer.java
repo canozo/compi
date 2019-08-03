@@ -15,6 +15,7 @@ class Lexer {
 
     /** lexical states */
     public static final int YYINITIAL = 0;
+    public static final int TITULO = 2;
 
     /**
      * ZZ_LEXSTATE[l] is the state in the DFA for the lexical state l
@@ -23,17 +24,16 @@ class Lexer {
      * l is of the form l = 2*k, k a non negative integer
      */
     private static final int ZZ_LEXSTATE[] = {
-            0, 0
+            0,  0,  1, 1
     };
 
     /**
      * Translates characters to character classes
      */
     private static final String ZZ_CMAP_PACKED =
-            "\11\0\1\1\1\11\1\12\1\12\1\11\22\0\1\1\16\0\1\10"+
-                    "\12\1\2\0\1\2\1\0\1\7\2\0\32\1\6\0\4\1\1\6"+
-                    "\3\1\1\4\2\1\1\5\7\1\1\3\6\1\12\0\1\12\u1fa2\0"+
-                    "\1\12\1\12\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+            "\12\0\1\10\1\10\1\10\1\10\41\0\1\7\14\0\1\1\1\0"+
+                    "\1\6\46\0\1\5\3\0\1\3\2\0\1\4\7\0\1\2\20\0"+
+                    "\1\10\u1fa2\0\1\10\1\10\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
     /**
      * Translates characters to character classes
@@ -46,10 +46,10 @@ class Lexer {
     private static final int [] ZZ_ACTION = zzUnpackAction();
 
     private static final String ZZ_ACTION_PACKED_0 =
-            "\1\0\2\1\15\0\1\2";
+            "\2\0\2\1\2\2\12\0\1\3\1\0\1\4";
 
     private static int [] zzUnpackAction() {
-        int [] result = new int[17];
+        int [] result = new int[19];
         int offset = 0;
         offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
         return result;
@@ -74,12 +74,12 @@ class Lexer {
     private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
     private static final String ZZ_ROWMAP_PACKED_0 =
-            "\0\0\0\13\0\26\0\41\0\54\0\67\0\102\0\115"+
-                    "\0\130\0\143\0\156\0\171\0\204\0\217\0\232\0\245"+
-                    "\0\13";
+            "\0\0\0\11\0\22\0\33\0\22\0\44\0\55\0\66"+
+                    "\0\77\0\110\0\121\0\132\0\143\0\154\0\165\0\176"+
+                    "\0\22\0\207\0\22";
 
     private static int [] zzUnpackRowMap() {
-        int [] result = new int[17];
+        int [] result = new int[19];
         int offset = 0;
         offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
         return result;
@@ -102,14 +102,14 @@ class Lexer {
     private static final int [] ZZ_TRANS = zzUnpackTrans();
 
     private static final String ZZ_TRANS_PACKED_0 =
-            "\2\2\1\3\6\2\20\0\1\4\13\0\1\5\11\0"+
-                    "\1\6\14\0\1\7\13\0\1\10\13\0\1\11\4\0"+
-                    "\1\11\1\12\4\11\2\0\1\11\11\0\1\13\5\0"+
-                    "\1\14\13\0\1\15\11\0\1\16\14\0\1\17\13\0"+
-                    "\1\20\13\0\1\21\3\0";
+            "\1\3\1\4\6\3\1\0\1\5\1\6\6\5\14\0"+
+                    "\1\7\15\0\1\10\4\0\1\11\7\0\1\12\10\0"+
+                    "\1\13\11\0\1\14\11\0\1\15\6\0\1\16\13\0"+
+                    "\1\17\7\0\1\20\12\0\1\21\7\0\1\22\11\0"+
+                    "\1\23\2\0";
 
     private static int [] zzUnpackTrans() {
-        int [] result = new int[176];
+        int [] result = new int[144];
         int offset = 0;
         offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
         return result;
@@ -147,10 +147,11 @@ class Lexer {
     private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
     private static final String ZZ_ATTRIBUTE_PACKED_0 =
-            "\1\0\1\11\1\1\15\0\1\11";
+            "\2\0\1\11\1\1\1\11\1\1\12\0\1\11\1\0"+
+                    "\1\11";
 
     private static int [] zzUnpackAttribute() {
-        int [] result = new int[17];
+        int [] result = new int[19];
         int offset = 0;
         offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
         return result;
@@ -225,6 +226,9 @@ class Lexer {
      */
     private int zzFinalHighSurrogate = 0;
 
+    /* user code: */
+    StringBuffer string = new StringBuffer();
+
 
     /**
      * Creates a new scanner
@@ -246,7 +250,7 @@ class Lexer {
         char [] map = new char[0x110000];
         int i = 0;  /* index in packed string  */
         int j = 0;  /* index in unpacked array */
-        while (i < 98) {
+        while (i < 82) {
             int  count = packed.charAt(i++);
             char value = packed.charAt(i++);
             do map[j++] = value; while (--count > 0);
@@ -544,12 +548,23 @@ class Lexer {
                     {
                     }
                     // fall through
-                    case 3: break;
+                    case 5: break;
                     case 2:
-                    { System.out.println("Titulo: " + yytext().substring(7, yytext().length() - 8));
+                    { string.append(yytext());
                     }
                     // fall through
-                    case 4: break;
+                    case 6: break;
+                    case 3:
+                    { string.setLength(0); yybegin(TITULO);
+                    }
+                    // fall through
+                    case 7: break;
+                    case 4:
+                    { yybegin(YYINITIAL);
+                        System.out.println("Titulo: " + string.toString());
+                    }
+                    // fall through
+                    case 8: break;
                     default:
                         zzScanError(ZZ_NO_MATCH);
                 }

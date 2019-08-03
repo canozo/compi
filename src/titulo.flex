@@ -3,16 +3,26 @@
 %unicode
 %int
 %class Lexer
+%state TITULO
 
-letra = [a-zA-Z]
-num = [0-9]
-espacio = [ \n\r\t]
+%{
+  StringBuffer string = new StringBuffer();
+%}
 
-title = <title>({letra}|{num}|{espacio})*<\/title>
+titleB = <title>
+titleE = <\/title>
 
 %%
 
 <YYINITIAL> {
-  {title} { System.out.println("Titulo: " + yytext().substring(7, yytext().length() - 8)); }
+  {titleB} { string.setLength(0); yybegin(TITULO); }
   .       { }
+}
+
+<TITULO> {
+  {titleE} {
+    yybegin(YYINITIAL);
+    System.out.println("Titulo: " + string.toString());
+  }
+  .       { string.append(yytext()); }
 }
