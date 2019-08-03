@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            Lexer lexer = new Lexer(new FileReader("input.txt"));
+            LexerP lexer = new LexerP(new FileReader("parrafos.txt"));
             lexer.yylex();
         } catch (IOException e) {
             e.printStackTrace();

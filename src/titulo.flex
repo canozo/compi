@@ -16,7 +16,7 @@ titleE = <\/title>
 
 <YYINITIAL> {
   {titleB} { string.setLength(0); yybegin(TITULO); }
-  .       { }
+  .        { }
 }
 
 <TITULO> {
@@ -24,5 +24,5 @@ titleE = <\/title>
     yybegin(YYINITIAL);
     System.out.println("Titulo: " + string.toString());
   }
-  .       { string.append(yytext()); }
+  .        { string.append(yytext()); }
 }
