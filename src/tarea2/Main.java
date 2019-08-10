@@ -1,3 +1,5 @@
+package tarea2;
+
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -5,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            LexerP lexer = new LexerP(new FileReader("parrafos.txt"));
+            Lexer lexer = new Lexer(new FileReader(Lexer.archivoInput));
             lexer.yylex();
         } catch (IOException e) {
             e.printStackTrace();

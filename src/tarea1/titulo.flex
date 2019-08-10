@@ -1,3 +1,5 @@
+package tarea1;
+
 %%
 
 %unicode
