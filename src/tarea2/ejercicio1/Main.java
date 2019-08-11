@@ -1,4 +1,4 @@
-package tarea2;
+package tarea2.ejercicio1;
 
 import java.io.FileReader;
 import java.io.IOException;
